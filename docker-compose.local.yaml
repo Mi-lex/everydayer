@@ -1,0 +1,14 @@
+
+version: "3.9"
+
+services: 
+  mongo:
+    ports: 
+      - 27017:27017
+
+  mongoExpress:
+    ports:
+      - 8081:8081
+    environment:
+      - ME_CONFIG_BASICAUTH_USERNAME=randomString
+      - ME_CONFIG_BASICAUTH_PASSWORD=randomString
