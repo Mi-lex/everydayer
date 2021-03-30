@@ -3,7 +3,6 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import env from './config/env';
 
-// const bootstrap = async () => {
 const bootstrap = async () => {
     const app = await NestFactory.create(AppModule);
     app.useGlobalPipes(
