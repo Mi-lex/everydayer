@@ -1,23 +1,18 @@
-import {
-    IsIn,
-    IsString,
-    IsArray,
-    ArrayUnique,
-    IsOptional,
-} from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
+import { IsIn, ArrayUnique } from 'class-validator';
 import { TaskTypes, WeekDays } from './../../../enums/tasks.enums';
 
 type TaskTypeUnion = `${TaskTypes}`;
 
 export class CreateTaskDto {
+    @ApiProperty()
     @IsIn(Object.values(TaskTypes))
     readonly type: TaskTypeUnion;
 
-    @IsString()
+    @ApiProperty()
     readonly payload: string;
 
-    @IsOptional()
-    @IsArray()
+    @ApiProperty()
     @IsIn(Object.values(WeekDays), { each: true })
     @ArrayUnique()
     execWeekDays?: `${WeekDays}`[];

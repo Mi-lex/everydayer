@@ -16,6 +16,9 @@ const bootstrap = async () => {
                 target: false,
                 value: false,
             },
+            transformOptions: {
+                enableImplicitConversion: true,
+            },
         }),
     );
 
@@ -26,7 +29,9 @@ const bootstrap = async () => {
         .build();
 
     const document = SwaggerModule.createDocument(app, config);
-    SwaggerModule.setup(env.API_DOC_PATH, app, document);
+    SwaggerModule.setup(env.API_DOC_PATH, app, document, {
+        customSiteTitle: `${env.PROJECT_NAME} api doc`,
+    });
 
     await app.listen(env.PORT);
 };
